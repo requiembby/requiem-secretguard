@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REQUIEM SecretGuard</title><link rel="stylesheet" href="popup.css">
+</head><body>
+<div class="app">
+  <header><div class="brand"><span class="logo">◇</span><div><strong>REQUIEM <em>/</em></strong><small>SECRETGUARD v0.3</small></div></div><span class="local">● LOCAL</span></header>
+  <main>
+    <div class="eyebrow">ON-DEMAND CODE AUDIT</div>
+    <h1>Inspect this page<span>.</span></h1>
+    <p class="intro">Search visible inline and same-origin JavaScript for credential-like patterns. Runs only when you click Scan.</p>
+    <section class="target"><span class="tiny">ACTIVE TAB</span><strong id="target">Checking active tab…</strong></section>
+    <div class="ack"><input type="checkbox" id="authorized"><label for="authorized">I own this website or have permission to test it.</label></div>
+    <button id="scan" disabled>Run security scan <span>→</span></button>
+    <p id="status" class="status" role="status">Select a supported website to begin.</p>
+    <section id="results" hidden>
+      <div class="metrics"><div><span>SCRIPTS</span><strong id="scripts">0</strong></div><div><span>FINDINGS</span><strong id="count">0</strong></div><div><span>SEVERITY</span><strong id="severity">—</strong></div></div>
+      <div class="findingsHead"><strong>Findings</strong><button id="export" class="secondary">Export JSON ↓</button></div>
+      <p class="notice">All values are redacted. A detection does not prove a secret is active.</p>
+      <div id="findings"></div>
+      <div id="warnings" class="warnings" hidden></div>
+    </section>
+  </main>
+  <footer><span>NO TELEMETRY · NO CREDENTIAL STORAGE</span><span>AUTHORIZED USE ONLY</span></footer>
+</div>
+<script src="scan-page.js"></script><script src="popup.js"></script>
+</body></html>

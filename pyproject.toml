@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "requiem-secretguard"
+version = "0.3.0"
+description = "Local-first secret scanner with CLI, browser dashboard, Chrome extension, and redacted reports"
+requires-python = ">=3.10"
+authors = [{name="Charoskhon Farkhadova"}]
+readme = "README.md"
+license = "MIT"
+keywords = ["security", "secret-scanning", "cybersecurity", "devsecops", "cli"]
+
+[project.scripts]
+secretguard = "secretguard.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["secretguard*"]
+
+[tool.setuptools.package-data]
+secretguard = ["webui/*.html", "webui/*.css", "webui/*.js"]

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090813">
+  <title>REQUIEM / SecretGuard — Local Security Studio</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-1"></div><div class="ambient ambient-2"></div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Application sidebar">
+      <div class="brand-row">
+        <div class="brand-icon" aria-hidden="true"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 6v6c0 5-3.5 8.3-8 10-4.5-1.7-8-5-8-10V6l8-4Z"/><path d="m8.5 12 2.3 2.3 4.7-5"/></svg></div>
+        <div><div class="brand">REQUIEM<span> /</span></div><div class="brand-minor">SECRETGUARD</div></div>
+      </div>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span class="nav-glyph">▦</span> Overview</a>
+        <a class="nav-link" href="#findings"><span class="nav-glyph">⌕</span> Findings <span class="nav-count" id="navFindingCount">0</span></a>
+        <a class="nav-link" href="#privacy"><span class="nav-glyph">◇</span> Privacy & limits</a>
+      </nav>
+      <div class="side-bottom">
+        <div class="secure-tile"><div class="secure-top"><span class="signal"></span> LOCAL ENGINE</div><strong>Your files stay here.</strong><p>Content is sent only to Python on this computer, never to a cloud service.</p></div>
+        <div class="sidebar-foot"><span>v0.3.0</span><span>MADE FOR DEVELOPERS</span></div>
+      </div>
+    </aside>
+    <main class="main" id="overview">
+      <div class="topbar"><div class="breadcrumb">WORKSPACE <span>/</span> SECURITY DASHBOARD</div><div class="topbar-right"><span class="top-chip"><span class="signal"></span> localhost:8765</span><span class="avatar">R</span></div></div>
+      <div class="content">
+        <section class="intro">
+          <div class="eyebrow"><span class="sparkle">✳</span> LOCAL-FIRST SECURITY ANALYSIS</div>
+          <h1>Know what's <span>exposed.</span></h1>
+          <p>Find secrets hiding in your code before the internet does. Private scanning, clear findings, and useful next steps.</p>
+        </section>
+
+        <section class="scan-panel" aria-labelledby="scanTitle">
+          <div class="scan-panel-head"><div><div class="section-kicker">01 / START A NEW SCAN</div><h2 id="scanTitle">Your workspace, under control.</h2></div><div class="shield-pill"><span>◆</span> PRIVATE BY DESIGN</div></div>
+          <div class="dropzone" id="dropzone">
+            <div class="folder-glyph" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/><path d="M3 10h18"/></svg></div>
+            <div class="drop-title" id="folderTitle">No folder selected</div>
+            <div class="drop-description" id="folderDescription">Choose a folder containing your source code to scan locally.</div>
+            <input type="file" id="folderInput" webkitdirectory directory multiple hidden aria-label="Choose project folder">
+            <button class="select-button" id="selectFolder" type="button">↗ &nbsp; Browse local folder</button>
+          </div>
+          <div class="scan-controls"><div class="scope-note"><span class="scope-icon">ⓘ</span> Scans text files only. Skips dependencies, binaries & build folders.</div><div class="action-row"><button class="btn btn-ghost" id="demoButton" type="button">Try demo</button><button class="btn btn-primary" id="scanButton" disabled type="button"><span aria-hidden="true">◎</span> <span id="scanButtonText">Run security scan</span> <span aria-hidden="true">→</span></button></div></div>
+          <div class="progress" id="progress" hidden role="status" aria-live="polite"><div class="progress-track"><div class="progress-bar" id="progressBar"></div></div><span id="progressText">Preparing scan…</span></div>
+          <div class="error" id="errorBox" hidden role="alert"></div>
+        </section>
+
+        <section class="stats-section" aria-label="Scan summary">
+          <div class="section-header"><div><div class="section-kicker">02 / SECURITY OVERVIEW</div><h2>At a glance<span class="period">.</span></h2></div><span class="last-scan" id="scanDate">No scan performed yet</span></div>
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-top"><span>FILES SCANNED</span><div class="stat-icon">▤</div></div><div class="stat-value" id="filesCount">—</div><div class="stat-foot">Local source files checked</div></div>
+            <div class="stat-card"><div class="stat-top"><span>FINDINGS</span><div class="stat-icon lilac">◈</div></div><div class="stat-value" id="findingsCount">—</div><div class="stat-foot">Potential secret matches</div></div>
+            <div class="stat-card"><div class="stat-top"><span>HIGH RISK</span><div class="stat-icon pink">△</div></div><div class="stat-value rose" id="highCount">—</div><div class="stat-foot">Needs your review</div></div>
+            <div class="stat-card"><div class="stat-top"><span>CRITICAL</span><div class="stat-icon amber">⚡</div></div><div class="stat-value gold" id="criticalCount">—</div><div class="stat-foot">Prioritize these first</div></div>
+          </div>
+        </section>
+
+        <section class="results-section" id="findings" aria-labelledby="findingTitle">
+          <div class="section-header findings-head"><div><div class="section-kicker">03 / SECURITY FINDINGS</div><h2 id="findingTitle">Detection results<span class="period">.</span></h2><p class="subcopy" id="resultsInfo">Run a scan or try the demo to see detected patterns.</p></div><div class="export-actions"><button class="btn btn-compact" id="downloadJson" disabled type="button">↓ JSON</button><button class="btn btn-compact" id="downloadHtml" disabled type="button">↓ HTML report</button></div></div>
+          <div class="filterbar"><div class="filter-pills" role="group" aria-label="Filter findings by severity"><button class="filter active" data-severity="all" type="button">All <span id="countAll">0</span></button><button class="filter" data-severity="critical" type="button">Critical</button><button class="filter" data-severity="high" type="button">High</button><button class="filter" data-severity="medium" type="button">Medium</button><button class="filter" data-severity="low" type="button">Low</button></div><input id="searchFindings" class="search" type="search" placeholder="Search findings…" aria-label="Search findings"></div>
+          <div id="resultsList" class="results-list" aria-live="polite"><div class="empty-state"><span class="empty-orb">◎</span><h3>Ready when you are.</h3><p>Select a folder to scan your own code, or use a harmless sample to see how SecretGuard works.</p></div></div>
+          <div class="coverage" id="coverage" hidden></div>
+        </section>
+        <section class="privacy-section" id="privacy"><span class="privacy-icon">♢</span><div><h3>Secure by default. Transparent about limits.</h3><p>Selected files are read by your browser and analyzed by a Python process bound to 127.0.0.1. No third-party uploads or telemetry. Reports contain filenames, line numbers and shortened fingerprints, never the matched credentials. Pattern matches can be false positives, and a clean scan is not a security guarantee.</p></div></section>
+        <footer>REQUIEM / SECRETGUARD <span>·</span> BUILT WITH PYTHON <span>·</span> FOR AUTHORIZED PROJECTS ONLY</footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "REQUIEM SecretGuard",
+  "short_name": "SecretGuard",
+  "version": "0.3.0",
+  "description": "Manually inspect inline and same-origin JavaScript on websites you own or are authorized to test. No remote reports.",
+  "minimum_chrome_version": "110",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_title": "SecretGuard — inspect this page",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
